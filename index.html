@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TOPBOY CLAN</title>
+
+  <!-- Gamer Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+
+  <!-- Link to your external CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1 id="typewriter"></h1>
+    <nav>
+  <ul>
+    <li><a href="PROJECT.HTML">Home</a></li>
+    <li><a href="#">Members</a></li>
+    <li><a href="#">Stats</a></li>
+    <li><a href="#">Join Us</a></li>
+    <li><a href="login.html">Login</a></li> <!-- 👈 New Login Link -->
+  </ul>
+</nav>
+  </header>
+
+  <section class="banner">
+    <img src="thumbnails/thumbnail 2.jpeg" alt="Clan Banner">
+  </section>
+
+  <main>
+    <section class="about reveal">
+      <h2>About Our Clan</h2>
+      <p>TOP BOY is a clan that focuses on teamwork.</p>
+    </section>
+
+    <section class="members reveal">
+      <h2>Meet the Squad</h2>
+      <ul>
+        <li>
+          <div class="member-card">
+            <img src="thumbnails/thumbnail 5.jpeg" alt="Pinchez">
+            <h3>Pinchez</h3>
+            <p>
+    
+                <strong>LEADER</strong>
+
+            </p>
+          </div>
+        </li>
+        <li>
+          <div class="member-card">
+            <img src="thumbnails/thumbnail 4.jpeg" alt="Dr_Pino">
+            <h3>Dr_Pino</h3>
+            <p>BEST PLAYER</p>
+          </div>
+          <div class="member-card">
+            <img src="thumbnails/thumbnail 3.jpeg" alt="Nixx$">
+            <h3>Nixx$</h3>
+            <p>
+    
+                <strong>NONCHALANT PLAYER</strong>
+
+            </p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="join reveal">
+      <h2>Want to Join?</h2>
+      <p>
+        We're always looking for sharp shooters and smart tacticians.<br>
+        DM us on WhatsApp: <strong>TOPBOY CLAN</strong><br>
+        Or click below:
+      </p>
+      <a class="btn" href="https://chat.whatsapp.com/I2rtGYglSXwGvf4LEmS5pN">APPLY NOW</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 TOPBOY PUBG Clan. Not affiliated with PUBG Corp.</p>
+  </footer>
+
+  <script>
+    // Typewriter effect on header
+    const text = 'ㄒㄖ卩乃ㄖㄚ匚ㄥ卂几';
+    let i = 0;
+    function typeWriter() {
+      if (i < text.length) {
+        document.getElementById("typewriter").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 150);
+      }
+    }
+    window.addEventListener('load', typeWriter);
+
+    // Reveal sections on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    window.addEventListener('scroll', () => {
+      for (let i = 0; i < reveals.length; i++) {
+        const windowHeight = window.innerHeight;
+        const elementTop = reveals[i].getBoundingClientRect().top;
+        const revealPoint = 100;
+
+        if (elementTop < windowHeight - revealPoint) {
+          reveals[i].classList.add('active');
+        }
+      }
+    });
+
+    // Apply Now click event
+    document.querySelector('.btn').addEventListener('click', function (e) {
+      e.preventDefault();
+      alert('🚀 Welcome to the TOPBOY Clan!');
+      window.open(this.href, '_blank');
+    });
+  </script>
+
+</body>
+</html>

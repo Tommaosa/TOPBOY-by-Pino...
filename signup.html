@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up - TOPBOY CLAN</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+
+  <div class="login-container">
+    <h1>SIGN UP</h1>
+    <form id="signupForm">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" placeholder="Choose a username" required />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="Enter password" required />
+
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" required />
+
+      <label class="toggle-password">
+        <input type="checkbox" onclick="togglePassword()" />
+        Show Passwords
+      </label>
+
+      <button type="submit">Create Account</button>
+    </form>
+
+    <p id="error-msg" aria-live="polite"></p>
+    <a href="login.html" class="back-home">← Back to Login</a>
+  </div>
+
+  <script>
+    const form = document.getElementById('signupForm');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+
+      const errorMsg = document.getElementById('error-msg');
+      errorMsg.textContent = "";
+
+      if (password !== confirmPassword) {
+        errorMsg.textContent = "❌ Passwords do not match.";
+        return;
+      }
+
+      // Basic username & password validation (can be expanded)
+      if (username.length < 3) {
+        errorMsg.textContent = "❌ Username must be at least 3 characters.";
+        return;
+      }
+      if (password.length < 6) {
+        errorMsg.textContent = "❌ Password must be at least 6 characters.";
+        return;
+      }
+
+      // For demo: store user in localStorage (not secure, just placeholder)
+      if(localStorage.getItem('user_' + username)) {
+        errorMsg.textContent = "❌ Username already taken.";
+        return;
+      }
+
+      localStorage.setItem('user_' + username, password);
+      alert("🎉 Account created! You can now log in.");
+      window.location.href = "login.html";
+    });
+
+    function togglePassword() {
+      const pwd = document.getElementById('password');
+      const confirmPwd = document.getElementById('confirmPassword');
+
+      const type = pwd.type === 'password' ? 'text' : 'password';
+      pwd.type = type;
+      confirmPwd.type = type;
+    }
+  </script>
+
+</body>
+</html>

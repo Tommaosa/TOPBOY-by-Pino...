@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Create Your Card</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: #0e0e0e;
+      color: white;
+      font-family: 'Orbitron', sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .form-area {
+      margin-bottom: 30px;
+    }
+
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      border-radius: 6px;
+      border: 1px solid #00ffe1;
+      background-color: #111;
+      color: white;
+      width: 300px;
+    }
+
+    .member-card {
+      border: 2px solid #00ffe1;
+      padding: 20px;
+      width: 300px;
+      margin: 0 auto;
+      border-radius: 12px;
+      box-shadow: 0 0 15px #00ffe1;
+      background: rgba(0,255,255,0.05);
+    }
+
+    .member-card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .back-home {
+      margin-top: 30px;
+      display: inline-block;
+      color: #00ffe1;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Create Your Member Card</h1>
+
+  <div class="form-area">
+    <input type="text" id="username" placeholder="Your In-Game Name" /><br>
+    <input type="file" id="uploadImage" accept="image/*" /><br>
+    <button onclick="generateCard()">Generate Card</button>
+    <button onclick="clearCard()" style="background:#ff0033; border:none; margin-left:10px;">Clear Card</button>
+  </div>
+
+  <div id="output"></div>
+
+  <a class="back-home" href="index.html">← Back to Home</a>
+
+  <script>
+    // Load saved card on page load
+    window.onload = function() {
+      const savedName = localStorage.getItem('memberName');
+      const savedImage = localStorage.getItem('memberImage');
+
+      if (savedName && savedImage) {
+        displayCard(savedName, savedImage);
+        document.getElementById('username').value = savedName;
+      }
+    }
+
+    // Generate and save card
+    function generateCard() {
+      const name = document.getElementById("username").value.trim();
+      const fileInput = document.getElementById("uploadImage");
+      const file = fileInput.files[0];
+
+      if (!name) {
+        alert("Please enter your name.");
+        return;
+      }
+
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const imageUrl = e.target.result;
+          saveCard(name, imageUrl);
+          displayCard(name, imageUrl);
+        };
+        reader.readAsDataURL(file);
+      } else {
+        const savedImage = localStorage.getItem('memberImage');
+        if (savedImage) {
+          saveCard(name, savedImage);
+          displayCard(name, savedImage);
+        } else {
+          alert("Please upload an image.");
+        }
+      }
+    }
+
+    // Show card on the page
+    function displayCard(name, imageUrl) {
+      document.getElementById("output").innerHTML = `
+        <div class="member-card">
+          <img src="${imageUrl}" alt="${name}'s Image">
+          <h3>${name}</h3>
+          <p><strong>NEW RECRUIT</strong></p>
+        </div>
+      `;
+    }
+
+    // ✅ Save card data and store into gallery list
+    function saveCard(name, imageUrl) {
+      localStorage.setItem('memberName', name);
+      localStorage.setItem('memberImage', imageUrl);
+
+      let gallery = JSON.parse(localStorage.getItem('gallery')) || [];
+
+      // Remove any existing entry with the same name
+      gallery = gallery.filter(member => member.name !== name);
+
+      // Add new member to gallery
+      gallery.push({ name, imageUrl });
+
+      // Save updated gallery
+      localStorage.setItem('gallery', JSON.stringify(gallery));
+    }
+
+    // Clear saved card data and UI
+    function clearCard() {
+      localStorage.removeItem('memberName');
+      localStorage.removeItem('memberImage');
+      document.getElementById('username').value = '';
+      document.getElementById('uploadImage').value = '';
+      document.getElementById('output').innerHTML = '';
+    }
+  </script>
+
+</body>
+</html>

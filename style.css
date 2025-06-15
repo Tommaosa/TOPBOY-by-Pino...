@@ -1,0 +1,194 @@
+<style>
+  /* Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+    color: #f0f0f0;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  a {
+    color: #00ffe1;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  a:hover {
+    color: #00ff88;
+  }
+
+  /* Header */
+  header {
+    background: #111;
+    padding: 30px 20px;
+    text-align: center;
+    border-bottom: 3px solid #00ffe1;
+    box-shadow: 0 4px 10px rgba(0, 255, 200, 0.2);
+  }
+
+  header h1 {
+    font-size: 3rem;
+    color: #00ffe1;
+    text-shadow: 0 0 15px #00ffe1;
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  nav ul li a {
+    color: #fff;
+    font-weight: bold;
+    padding: 8px 16px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+  }
+
+  nav ul li a:hover {
+    border: 2px solid #00ffe1;
+    border-radius: 5px;
+  }
+
+  /* Banner */
+  .banner img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    display: block;
+    border-bottom: 3px solid #00ffe1;
+  }
+
+  main {
+    padding: 60px 20px;
+  }
+
+  section {
+    margin-bottom: 60px;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #00ffe1;
+    text-shadow: 0 0 10px #00ffe1;
+  }
+
+  p {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto 20px;
+    color: #ccc;
+  }
+
+  /* Member Cards */
+  .members ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+  }
+
+  .member-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #00ffe1;
+    border-radius: 12px;
+    padding: 20px;
+    width: 220px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 15px rgba(0, 255, 200, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .member-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #00ffe1;
+  }
+
+  .member-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #00ffe1;
+  }
+
+  .member-card h3 {
+    color: #00ffcc;
+    margin-bottom: 8px;
+  }
+
+  .member-card p {
+    font-size: 0.95rem;
+    color: #ccc;
+  }
+
+  /* Join Button */
+  .btn {
+    display: inline-block;
+    padding: 14px 30px;
+    background: linear-gradient(90deg, #00ffe1, #00ff88);
+    color: #000;
+    font-weight: bold;
+    border-radius: 8px;
+    text-shadow: none;
+    box-shadow: 0 0 10px #00ffe1;
+    transition: all 0.3s ease;
+  }
+
+  .btn:hover {
+    box-shadow: 0 0 20px #00ff88;
+    transform: scale(1.05);
+  }
+
+  footer {
+    background: #0f0f0f;
+    padding: 20px;
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+    border-top: 2px solid #00ffe1;
+  }
+
+  /* Scroll reveal animation */
+  .reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease-out;
+  }
+
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    nav ul {
+      gap: 20px;
+    }
+
+    header h1 {
+      font-size: 2rem;
+    }
+
+    .member-card {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+</style>

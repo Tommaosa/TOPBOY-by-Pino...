@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - TOPBOY CLAN</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+
+  <div class="login-container">
+    <h1>LOGIN</h1>
+    <form id="loginForm">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" placeholder="Enter username" required />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="Enter password" required />
+
+      <label class="toggle-password">
+        <input type="checkbox" onclick="togglePassword()" />
+        Show Password
+      </label>
+
+      <button type="submit">Enter the Arena</button>
+    </form>
+
+    <p id="error-msg" aria-live="polite"></p>
+
+    <p style="margin-top: 15px; font-size: 0.95rem;">
+      Don't have an account? 
+      <a href="signup.html" style="color:#00ffe1; text-decoration: underline;">Sign Up</a>
+    </p>
+
+    <a href="index.html" class="back-home">← Back to Home</a>
+  </div>
+
+  <script>
+    const form = document.getElementById('loginForm');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+
+      const errorMsg = document.getElementById('error-msg');
+      errorMsg.textContent = ""; // clear previous error
+
+      if (username === "topboy" && password === "clan123") {
+        alert("🎮 Welcome to the TOPBOY Clan!");
+        window.location.href = "member-card.html";
+      } else {
+        errorMsg.textContent = "❌ Invalid username or password.";
+      }
+    });
+
+    function togglePassword() {
+      const pwdField = document.getElementById('password');
+      pwdField.type = pwdField.type === 'password' ? 'text' : 'password';
+    }
+  </script>
+
+</body>
+</html>
+

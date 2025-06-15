@@ -1,0 +1,108 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #0e0e0e, #1a1a1a);
+  font-family: 'Orbitron', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #fff;
+}
+
+.login-container {
+  background: rgba(0, 255, 225, 0.05);
+  border: 2px solid #00ffe1;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #00ffe1;
+  text-align: center;
+  width: 350px;
+  max-width: 90vw;
+}
+
+.login-container h1 {
+  color: #00ffe1;
+  margin-bottom: 25px;
+  text-shadow: 0 0 10px #00ffe1;
+}
+
+.login-container label {
+  display: block;
+  margin-bottom: 6px;
+  text-align: left;
+  font-size: 0.85rem;
+  color: #00ffe1cc;
+  text-shadow: 0 0 5px #00ffe1cc;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  background: #111;
+  border: 2px solid #00ffe1;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.login-container input:focus {
+  outline: 2px solid #00ffe1;
+  box-shadow: 0 0 12px #00ffe1;
+}
+
+.login-container button {
+  padding: 12px 25px;
+  background: linear-gradient(90deg, #00ffe1, #00ff88);
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+  box-shadow: 0 0 15px #00ffe1;
+  transition: transform 0.3s ease;
+}
+
+.login-container button:hover {
+  transform: scale(1.05);
+}
+
+#error-msg {
+  color: #ff4d4d;
+  margin-top: 10px;
+  font-weight: 700;
+  text-shadow: 0 0 6px #ff4d4d88;
+  min-height: 22px;
+  font-size: 0.9rem;
+}
+
+.back-home {
+  display: block;
+  margin-top: 20px;
+  color: #00ffe1;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.back-home:hover {
+  color: #00ff88;
+}
+
+/* Responsive */
+@media (max-width: 400px) {
+  .login-container {
+    padding: 30px 20px;
+    width: 100%;
+  }
+
+  .login-container h1 {
+    font-size: 1.5rem;
+  }
+
+  .login-container button, .login-container input {
+    font-size: 0.95rem;
+  }
+}
